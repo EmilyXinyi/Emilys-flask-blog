@@ -36,5 +36,5 @@ jobs:
       # - name: Print container status
       #   run: cd ${{  secrets.PROJECT_ROOT }} && docker-compose ps
 
-      - name: Discord message
-        run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
+      # - name: Discord message
+      #   run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"

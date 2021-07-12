@@ -28,16 +28,20 @@ jobs:
           SSH_PRIVATE_KEY: ${{  secrets.SSH_PRIVATE_KEY }}
           SSH_IP: ${{ secrets.SSH_IP  }}
 
-      # - name: Print project root directory 
-      #   run: ssh my-vm 'cd ${{  secrets.PROJECT_ROOT  }} && pwd'
+      - name: Print project root directory 
+        run: ssh my-vm 'cd ${{  secrets.PROJECT_ROOT  }} && pwd'
+
       - name: Deploy site
         run: ssh my-vm 'cd ${{  secrets.PROJECT_ROOT }} && git fetch && git reset --hard origin/master && docker-compose down && docker-compose up -d --build'
 
       - name: Print container status
         run: ssh my-vm 'cd ${{  secrets.PROJECT_ROOT }} && docker-compose ps'
 
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
       - name: Deployment test
-        run: actions/checkout@v2 | bash prod-test.sh
+        run: bash prod-test.sh
 
       - name: Discord message
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"

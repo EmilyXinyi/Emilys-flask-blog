@@ -2,7 +2,7 @@
 
 curl -s -o /dev/null -w "%{http_code}" https://emilyxinyi-chen.duckdns.org
 res=$?
-if [[ $res -ne 200]]
+if [[ $res -ne 200 ]]
 then
     echo "home page failed with: $res"
 else
@@ -11,7 +11,7 @@ fi
 
 curl -s -o /dev/null -w "%{http_code}" https://emilyxinyi-chen.duckdns.org/health
 res=$?
-if [[ $res -ne 200]]
+if [[ $res -ne 200 ]]
 then
     echo "health page failed with: $res"
 else
@@ -20,7 +20,7 @@ fi
 
 curl -s -o /dev/null -w "%{http_code}" https://emilyxinyi-chen.duckdns.org/register
 res=$?
-if [[ $res -ne 200]]
+if [[ $res -ne 200 ]]
 then
     echo "register page failed with: $res"
 else
@@ -29,7 +29,7 @@ fi
 
 curl -s -o /dev/null -w "%{http_code}" https://emilyxinyi-chen.duckdns.org/login
 res=$?
-if [[ $res -ne 200]]
+if [[ $res -ne 200 ]]
 then
     echo "login page failed with: $res"
 else

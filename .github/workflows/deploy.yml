@@ -37,8 +37,7 @@ jobs:
         run: ssh my-vm 'cd ${{  secrets.PROJECT_ROOT }} && docker-compose ps'
 
       - name: Deployment test
-        uses: actions/checkout@v2
-        run: bash prod-test.sh
+        run: actions/checkout@v2 | bash prod-test.sh
 
       - name: Discord message
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
